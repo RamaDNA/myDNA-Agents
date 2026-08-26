@@ -1,0 +1,34 @@
+#langchain autonomous automation 
+langchain
+langchain-ollama
+langchain-google-genai
+langgraph
+deepagents
+
+#langchain Gdrive integration
+google-api-python-client
+google-auth-httplib2
+google-auth-authlib
+
+#langchain Qdrant
+langchain-qdrant
+
+#settings config
+pydantic
+pydantic-settings
+
+#read env file
+python-dotenv
+
+#server service
+fastapi
+uvicorn[standard]
+
+# #for search engine
+tavily
+
+# #for text to sql agent
+text2sql-framework[langchain]
+
+#for database connection
+sqlalchemy

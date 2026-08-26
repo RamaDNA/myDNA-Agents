@@ -1,0 +1,52 @@
+services:
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    environment:
+      - OLLAMA_HOST=0.0.0.0:11434
+    env_file:
+      - .env
+    volumes:
+      - ollama-dev-data:/root/.ollama
+    ports:
+      - 11434:11434
+    networks:
+      - ai-network
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    healthcheck:
+      test: ["CMD", "ollama", "list"]
+      interval: 10s
+      timeout: 30s
+      retries: 5
+      start_period: 30s
+    restart: always
+
+  app:
+    build:
+      context: .
+      dockerfile: app/dockerfile
+    container_name: app-agents-be
+    env_file:
+      - .env
+    ports:
+      - 7001:7001
+    networks:
+      - ai-network
+    depends_on:
+      ollama:
+        condition: service_healthy
+    restart: always
+
+networks:
+  ai-network:
+    driver: bridge
+
+volumes:
+  ollama-dev-data:
+    external: true
