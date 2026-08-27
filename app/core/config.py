@@ -22,6 +22,11 @@ class Settings(BaseSettings):
     DB_PASSWORD: str | None = None
     DB_NAME: str | None = None
 
+    # Google Drive settings
+    GOOGLE_DRIVE_FOLDER_ID: str | None = None
+    GOOGLE_DRIVE_CREDENTIALS_PATH: str | None = None
+    GOOGLE_DRIVE_TOKEN_PATH: str | None = None
+
     # JWT settings
     JWT_SECRET_KEY: str
     JWT_ALGORITHM: str
