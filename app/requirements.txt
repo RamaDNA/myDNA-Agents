@@ -1,34 +1,32 @@
-#langchain autonomous automation 
+# --- LangChain Core & Agents ---
 langchain
 langchain-ollama
 langchain-google-genai
 langgraph
 deepagents
 
-#langchain Gdrive integration
+# --- Google Drive Integration ---
+langchain-googledrive
 google-api-python-client
 google-auth-httplib2
-google-auth-authlib
+google-auth-oauthlib
 
-#langchain Qdrant
+# --- Vector Database (Qdrant) ---
 langchain-qdrant
+qdrant-client
 
-#settings config
+# --- Config & Environment Variables ---
 pydantic
 pydantic-settings
-
-#read env file
 python-dotenv
 
-#server service
+# --- API Server (FastAPI) ---
 fastapi
 uvicorn[standard]
 
-# #for search engine
-tavily
+# --- Search Engine Tool ---
+tavily-python
 
-# #for text to sql agent
+# --- Database & Text-to-SQL ---
 text2sql-framework[langchain]
-
-#for database connection
 sqlalchemy
