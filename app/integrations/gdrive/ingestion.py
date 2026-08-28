@@ -4,11 +4,8 @@ from app.integrations.qdrant.qdrant_client import get_qdrant_client
 from app.core.config import settings
 
 qdrant_client = get_qdrant_client()
-collection_name = settings.QDRANT_COLLECTION_NAME_GDRIVE
-dimensions_store = settings.QDRANT_DIMENSIONS_STORE
-embeddings_model = settings.OLLAMA_EMBEDDINGS_MODEL
 
-def load_gdrive_to_qdrant(folder_id: str, collection_name: str):
+def load_gdrive_to_qdrant(folder_id: str):
     # Load Google Drive documents
     loader = load_gdrive_loader(folder_id)
     documents = loader.load()
@@ -16,11 +13,10 @@ def load_gdrive_to_qdrant(folder_id: str, collection_name: str):
     # Create a Qdrant vector store
     vector_store = QdrantVectorStore(
         client=qdrant_client,
-        collection_name=collection_name,
-        embedding=embeddings_model,
+        collection_name=settings.QDRANT_COLLECTION_NAME_GDRIVE,
+        embedding=settings.OLLAMA_EMBEDDINGS_MODEL,
         distance="Cosine",
-        vector_size=dimensions_store,
-        
+        vector_size=settings.QDRANT_DIMENSIONS_STORE,
     )
 
     # Add documents to the Qdrant vector store

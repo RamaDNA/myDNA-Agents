@@ -7,6 +7,8 @@ class Settings(BaseSettings):
     OLLAMA_API_KEY: str | None = None
     OLLAMA_LOCAL_LLM: str | None = None
     OLLAMA_CLOUD_LLM: str | None = None
+    ## Ollama embeddings settings
+    OLLAMA_EMBEDDINGS_MODEL: str | None = None
 
     #Qdrant settings
     QDRANT_API_KEY: str | None = None
@@ -26,6 +28,9 @@ class Settings(BaseSettings):
     GOOGLE_DRIVE_FOLDER_ID: str | None = None
     GOOGLE_DRIVE_CREDENTIALS_PATH: str | None = None
     GOOGLE_DRIVE_TOKEN_PATH: str | None = None
+    ## Qdrant google drive settings
+    QDRANT_COLLECTION_NAME_GDRIVE: str | None = None
+    QDRANT_DIMENSIONS_STORE: int | None = None
 
     # JWT settings
     JWT_SECRET_KEY: str
